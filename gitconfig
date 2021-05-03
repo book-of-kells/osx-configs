@@ -1,0 +1,56 @@
+[alias]
+	co = checkout
+	cob = checkout -b
+	coo = !git fetch && git checkout
+	b = rev-parse --abbrev-ref HEAD  # same as `git symbolic-ref --short HEAD`, `git name-rev --name-only HEAD` and if on detached HEAD use `git branch | grep '*' | sed s/*\ //g`
+	br = branch
+	brd = branch -d
+	brD = branch -D
+	merged = branch --merged
+	st = status
+	aa = add -A .
+	cm = commit -m
+	aacm = !git add -A . && git commit -m
+	cp = cherry-pick
+	amend = commit --amend -m
+	dev = !git checkout dev && git pull origin dev
+	develop = !git checkout develop && git pull origin develop
+	staging = !git checkout staging && git pull origin staging
+	stage = !git checkout stage && git pull origin stage
+	main = !git checkout main && git pull origin
+	po = push origin
+	podev = push origin dev
+	pod = push origin develop
+	pos = push origin staging
+	postage = push origin stage
+	pom = push origin main
+	poh = push origin HEAD
+	pogm = !git push origin gh-pages && git checkout main && git pull origin main && git rebase gh-pages && git push origin main && git checkout gh-pages
+	pomg = !git push origin main && git checkout gh-pages && git pull origin gh-pages && git rebase main && git push origin gh-pages && git checkout main
+	cogrep = "!f() { git fetch && git branch -a | grep "${1}" | sed 's|  remotes/origin/||g' | head -n1 | xargs git checkout; }; f"
+	plo = pull origin
+	plod = pull origin dev
+	plos = pull origin staging
+	plom = pull origin main
+	ploh = pull origin HEAD
+	unstage = reset --soft HEAD^
+    ff = merge --ff-only
+    noff = merge --no-ff
+    fa = fetch --all
+    ds = diff --stat=160,120
+    dh1 = diff HEAD~1
+	f = "!git ls-files | grep -i"
+	gr = grep -Ii
+    # Fancy logging.
+ 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+[merge]
+    tool = vimdiff
+[credential]
+[user]
+	name = <github-username>
+	email = <anonymized-github-username-email>@users.noreply.github.com
+[init]
+    # templateDir = ~/.config/git/template/
+	defaultBranch = main
+    
