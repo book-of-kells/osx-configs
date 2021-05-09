@@ -1,10 +1,11 @@
 #!/bin/zsh
 
 
-chflags nohidden ~/Library
-chflags nohidden /Volumes
+# chflags nohidden ~/Library
+# chflags nohidden /Volumes
 
 
+# todo
 # # set computer name
 # sudo scutil --set ComputerName "$1"
 # sudo scutil --set HostName "$1"
@@ -20,10 +21,7 @@ curl https://raw.githubusercontent.com/book-of-kells/osx-configs/main/gitconfig 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-xcode-select --install
-
-# install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# xcode-select --install
 
 
 ##############################################################################################
@@ -40,6 +38,7 @@ xcode-select --install
 mkdir -p ~/Pictures/screenshots
 defaults write com.apple.screencapture location ~/Pictures/screenshots
 
+# todo NSUSerKeyEquivalents for shifting to left and right of screen, e.g.
 # defaults write -g NSUserKeyEquivalents -dict-add 'Save As...' '@$S'
 
 # automatically show subtitles
@@ -55,7 +54,9 @@ defaults write NSGlobalDomain com.apple.trackpad.scaling -float 3
 
 # show bluetooth status in menu bar
 defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth"  -bool true  # or -int 1 ?
-defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true  # or -int 1 ?
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true  # or -int 1 ? todo verify
+
+# todo bluetooth
 # com.apple.BluetoothFileExchange
 # /System/Applications/Utilities/Bluetooth File Exchange.app
 # Found 1 keys in domain 'com.apple.sharingd': {
@@ -88,6 +89,7 @@ defaults write com.apple.Spotlight orderedItems -array \
     '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 fi
 
+# todo verify
 # firewall
 sudo defaults write /Library/Preferences/com.apple.alf allowdownloadsignedenabled -int 0
 sudo defaults write /Library/Preferences/com.apple.alf allowsignedenabled -int 0
@@ -96,6 +98,8 @@ sudo defaults write /Library/Preferences/com.apple.alf firewallunload -int 0
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 2 
 sudo defaults write /Library/Preferences/com.apple.alf loggingenabled -int 1 
 sudo defaults write /Library/Preferences/com.apple.alf loggingoption -int 0
+
+# todo
 # sudo defaults write /Library/Preferences/com.apple.alf
    # firewall =     {
    #      "Apple Remote Desktop" =         {
@@ -140,9 +144,9 @@ sudo defaults write /Library/Preferences/com.apple.alf loggingoption -int 0
 # disable location settings
 sudo defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -int 0
 
-# input volume to zero
+# todo input volume to zero
 
-# screensaver
+# todo screensaver
 
 # show hidden files
 defaults write com.apple.Finder AppleShowAllFiles true
@@ -159,11 +163,15 @@ killall Finder
 #                                                                                                   #
 #####################################################################################################
 
+# install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 brew install pyenv
 brew install tree
 brew install jq
 brew install go
 brew install docker
+brew install youtube-dl
 
 brew install --cask docker
 brew install --cask sublime-text
@@ -178,10 +186,19 @@ brew install --cask font-fira-code
 brew install --cask font-jetbrains-mono
 
 
-# crontab for brew update && brew upgrade
+# todo crontab for brew update && brew upgrade
 
 
-# PYTHON STUFF
+#############################################################################
+#    .______   ____    ____ .___________. __    __    ______   .__   __.    #
+#    |   _  \  \   \  /   / |           ||  |  |  |  /  __  \  |  \ |  |    #
+#    |  |_)  |  \   \/   /  `---|  |----`|  |__|  | |  |  |  | |   \|  |    #
+#    |   ___/    \_    _/       |  |     |   __   | |  |  |  | |  . `  |    #
+#    |  |          |  |         |  |     |  |  |  | |  `--`  | |  |\   |    #
+#    | _|          |__|         |__|     |__|  |__|  \______/  |__| \__|    #
+#                                                                           #
+#############################################################################
+
 pyenv install 3.9.4
 pyenv global 3.9.4
 python -m pip install --user pipx
@@ -201,7 +218,7 @@ defaults write com.apple.Terminal "Startup Window Settings" "custom"
 
 
 
-
+# easy PATH visualization
 echo '#!/bin/zsh
 
 string=${1:-$PATH}
