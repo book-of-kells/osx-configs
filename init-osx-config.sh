@@ -162,11 +162,13 @@ killall Finder
 brew install pyenv
 brew install tree
 brew install jq
-brew install docker
 brew install go
+brew install docker
 
-
+brew install --cask docker
 brew install --cask sublime-text
+brew install --cask pycharm-ce
+brew install --cask goland
 brew install --cask malwarebytes
 brew install --cask lastpass
 brew install --cask expressvpn
@@ -176,7 +178,21 @@ brew install --cask font-fira-code
 brew install --cask font-jetbrains-mono
 
 
-# download terminal file
+# crontab for brew update && brew upgrade
+
+
+# PYTHON STUFF
+pyenv install 3.9.4
+pyenv global 3.9.4
+python -m pip install --user pipx
+python -m pipx ensurepath
+pipx install glances          # https://glances.readthedocs.io/en/latest/quickstart.html
+pipx install --include-deps jupyter
+pipx install pipenv
+# crontab for pipx upgrade-all
+
+
+# download terminal settings file
 curl https://raw.githubusercontent.com/book-of-kells/osx-configs/main/custom.terminal > ~/Documents/custom.terminal
 # set as default terminal shell
 open ~/Documents/custom.terminal
@@ -257,8 +273,14 @@ set_go_root
 #############################################################################
                                                                           
 # pipx
-# export PATH="/Users/kells/.local/bin:$PATH"  # after installing pipx, packages installed with pipx are available globally.
+export PATH="$HOME/.local/bin:$PATH"  # after installing pipx, packages installed with pipx are available globally.
 
+## pipx completions
+# autoload -U bashcompinit
+# bashcompinit
+# eval "$(register-python-argcomplete pipx)"
+
+# pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
