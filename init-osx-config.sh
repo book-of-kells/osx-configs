@@ -166,12 +166,13 @@ killall Finder
 # install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+brew install docker
 brew install pyenv
 brew install nvm
+brew install git-credential-manager 
 brew install tree
 brew install jq
 brew install go
-brew install docker
 brew install youtube-dl
 
 brew install --cask docker
