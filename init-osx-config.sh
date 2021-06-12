@@ -167,6 +167,7 @@ killall Finder
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew install pyenv
+brew install nvm
 brew install tree
 brew install jq
 brew install go
@@ -252,15 +253,38 @@ chmod 755 /usr/local/bin/splits
 
 echo '
 
-#########################################################################
-#      _______   ______    __          ___      .__   __.   _______     #
-#     /  _____| /  __  \  |  |        /   \     |  \ |  |  /  _____|    #
-#    |  |  __  |  |  |  | |  |       /  ^  \    |   \|  | |  |  __      #
-#    |  | |_ | |  |  |  | |  |      /  /_\  \   |  . `  | |  | |_ |     #
-#    |  |__| | |  `--`  | |  `----./  _____  \  |  |\   | |  |__| |     #
-#     \______|  \______/  |_______/__/     \__\ |__| \__|  \______|     #
-#                                                                       #
-#########################################################################
+
+#################################
+#       ___  ____ ____ _ _ _            #
+#       |__] |__/ |___ | | |            #
+#       |__] |  \ |___ |_|_|            #
+#                                           #
+#################################                                 
+                                                             
+
+#Unbound is a caching DNS resolver.
+export PATH="$PATH:/usr/local/sbin"
+
+
+#########################################
+#       ____ ____ _    ____ _  _ ___        #
+#       | __ |    |    |  | |  | |  \       #
+#       |__] |___ |___ |__| |__| |__/       #
+#                                                                               #
+#########################################
+
+
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+
+#############################################
+#       ____ ____ _    ____ _  _ ____       #
+#       | __ |  | |    |__| |\ | | __       #
+#       |__] |__| |___ |  | | \| |__]       #
+#                                           #
+#############################################
+
 
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
@@ -279,27 +303,21 @@ set_go_root() {
 set_go_root
 
 
-#############################################################################
-#    .______   ____    ____ .___________. __    __    ______   .__   __.    #
-#    |   _  \  \   \  /   / |           ||  |  |  |  /  __  \  |  \ |  |    #
-#    |  |_)  |  \   \/   /  `---|  |----`|  |__|  | |  |  |  | |   \|  |    #
-#    |   ___/    \_    _/       |  |     |   __   | |  |  |  | |  . `  |    #
-#    |  |          |  |         |  |     |  |  |  | |  `--`  | |  |\   |    #
-#    | _|          |__|         |__|     |__|  |__|  \______/  |__| \__|    #
-#                                                                           #
-#############################################################################
-                                                                          
+#############################################
+#       ___  _   _ ___ _  _ ____ _  _       #
+#       |__]  \_/   |  |__| |  | |\ |       #
+#       |      |    |  |  | |__| | \|       #
+#                                           #
+#############################################
+
+
 # pipx
 export PATH="$HOME/.local/bin:$PATH"  # after installing pipx, packages installed with pipx are available globally.
 
-## pipx completions
-# autoload -U bashcompinit
-# bashcompinit
-# eval "$(register-python-argcomplete pipx)"
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+  eval "$(pyenv init --path)"
 fi
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -310,17 +328,28 @@ export PIPENV_PYTHON=$PYENV_ROOT/shims/python
 
 
 
-############################################################################
-#    .______          ___      .__   __.  _______   ______   .___  ___.    #
-#    |   _  \        /   \     |  \ |  | |       \ /  __  \  |   \/   |    #
-#    |  |_)  |      /  ^  \    |   \|  | |  .--.  |  |  |  | |  \  /  |    #
-#    |      /      /  /_\  \   |  . `  | |  |  |  |  |  |  | |  |\/|  |    #
-#    |  |\  \----./  _____  \  |  |\   | |  `--`  |  `--`  | |  |  |  |    #
-#    | _| `._____/__/     \__\ |__| \__| |_______/ \______/  |__|  |__|    #
-#                                                                          #
-############################################################################
+#################################
+#       _  _ ____ ___  ____             #
+#       |\ | |  | |  \ |___             #
+#       | \| |__| |__/ |___             #
+#                                                               #
+#################################
 
-# PATH=$PATH:/usr/libexec
+export NVM_DIR="$HOME/.nvm"
+# source $(brew --prefix nvm)/nvm.sh
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export NODE_PATH='/usr/local/lib/node_modules'
+export PATH=$NODE_PATH:$PATH
+
+
+#################################
+#       _  _ _ ____ ____        #
+#       |\/| | [__  |           #
+#       |  | | ___] |___        #
+#                               #
+#################################
+
 
 export icloud=$HOME"/Library/Mobile Documents/com~apple~CloudDocs"
 alias getaudio="youtube-dl -x --audio-quality=0 --audio-format=mp3"
