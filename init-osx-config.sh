@@ -87,7 +87,7 @@ defaults write com.apple.Spotlight orderedItems -array \
     '{"enabled" = 1;"name" = "MENU_EXPRESSION";}' \
     '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
     '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
-fi
+
 
 # todo verify
 # firewall
@@ -179,11 +179,12 @@ brew install --cask docker
 brew install --cask sublime-text
 brew install --cask pycharm-ce
 brew install --cask goland
+brew install --cask visual-studio-code
 brew install --cask malwarebytes
 brew install --cask lastpass
 brew install --cask expressvpn
 brew install --cask firefox
-brew install --cask little-snitch
+brew install --cask postman
 brew install --cask font-fira-code
 brew install --cask font-jetbrains-mono
 
@@ -201,8 +202,8 @@ brew install --cask font-jetbrains-mono
 #                                                                           #
 #############################################################################
 
-pyenv install 3.9.4
-pyenv global 3.9.4
+pyenv install 3.9.7
+pyenv global 3.9.7
 python -m pip install --user pipx
 python -m pipx ensurepath
 pipx install glances          # https://glances.readthedocs.io/en/latest/quickstart.html
@@ -221,7 +222,7 @@ defaults write com.apple.Terminal "Startup Window Settings" "custom"
 
 
 # easy PATH visualization
-echo '#!/bin/zsh
+sudo echo '#!/bin/zsh
 
 string=${1:-$PATH}
 delimiter=${2:-":"}
@@ -237,7 +238,7 @@ done
 
 IFS=$OLD_IFS' >> /usr/local/bin/splits
 
-chmod 755 /usr/local/bin/splits
+sudo chmod 755 /usr/local/bin/splits
 
 
 # customize .zshrc
@@ -275,8 +276,9 @@ export PATH="$PATH:/usr/local/sbin"
 #############################################
 
 
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+GCLOUD_SDK_PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+[ -s "${GCLOUD_SDK_PATH}/completion.zsh.inc" ] && . "${GCLOUD_SDK_PATH}/completion.zsh.inc" # enables shell command completion for gcloud
+[ -s "${GCLOUD_SDK_PATH}/path.zsh.inc" ] && . "${GCLOUD_SDK_PATH}/path.zsh.inc"  # adds the Google Cloud SDK
 
 
 #############################################
@@ -295,7 +297,7 @@ mkdir -p $GOBIN
 
 
 set_go_root() {
-    CURRENT_GO_VERSION=${1:-"1.16"}
+    CURRENT_GO_VERSION=${1:-"1.17"}
     GO_BREW_PREFIX=$(brew --prefix go@${CURRENT_GO_VERSION})
     export GOROOT=${GO_BREW_PREFIX}/libexec
     export PATH=$PATH:$GOROOT/bin
@@ -340,8 +342,6 @@ export NVM_DIR="$HOME/.nvm"
 # source $(brew --prefix nvm)/nvm.sh
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-export NODE_PATH='/usr/local/lib/node_modules'
-export PATH=$NODE_PATH:$PATH
 
 
 #################################
@@ -354,6 +354,10 @@ export PATH=$NODE_PATH:$PATH
 
 export icloud=$HOME"/Library/Mobile Documents/com~apple~CloudDocs"
 alias getaudio="youtube-dl -x --audio-quality=0 --audio-format=mp3"
+
+
+# `sudo dns` will flush dns cache
+alias dns="killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 
 
 ' >> ~/.zshrc
