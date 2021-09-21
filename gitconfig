@@ -48,8 +48,8 @@
     tool = vimdiff
 [credential]
 [user]
-	name = <github-username>
-	email = <anonymized-github-username-email>@users.noreply.github.com
+	name = <username for your account in bitbucket, github, gitlab, etc.>
+	email = <anonymized email for your account in bitbucket, github, gitlab, etc.>
 [init]
     # templateDir = ~/.config/git/template/
 	defaultBranch = main
