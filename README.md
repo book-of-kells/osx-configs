@@ -1,2 +1,50 @@
 # configuring osx
 
+Work in progress. So far this script is more like notes to myself.
+
+## Configurations
+- `~/.gitconfig`
+- screenshot directory
+- auto-show subtitles
+- three-finger drag
+- max trackpad speed
+- show bluetooth status
+- Spotlight resources
+- firewall
+- disable location settings
+- show hidden files
+- pyenv
+- terminal settings
+- custom `splits` command
+- various settings in `~/.zshrc`
+
+## Install list
+- oh-my-zsh
+- homebrew
+
+### homebrew install list
+#### homebrew formulae
+- docker
+- pyenv
+- nvm
+- git-credential-manager
+- tree
+- jq
+- go
+- youtube-dl
+
+#### homebrew casks
+- docker
+- sublime-text
+- pycharm-ce
+- goland
+- visual-studio-code
+- malwarebytes
+- lastpass
+- expressvpn
+- firefox
+- postman
+- font-fira-code
+- font-jetbrains-mono
+- todo: google-cloud-sdk
+
