@@ -1193,7 +1193,7 @@
 	<key>UseBrightBold</key>
 	<true/>
 	<key>WindowTitle</key>
-	<string>IPython: miniconda3/bin</string>
+	<string></string>
 	<key>columnCount</key>
 	<integer>90</integer>
 	<key>name</key>
