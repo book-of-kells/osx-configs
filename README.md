@@ -2,6 +2,13 @@
 
 Work in progress. So far this script is more like notes to myself.
 
+## usage
+Theoretically, it can be run it as root:
+```commandline
+$ sudo ./init-osx-config.sh
+```
+It might throw an error if `xcode-select --install` hasn't been ran yet.
+
 ## Configurations
 - `~/.gitconfig`
 - screenshot directory
