@@ -3,6 +3,8 @@
 Work in progress. So far this script is more like notes to myself.
 
 ## usage
+Change the name and email attributes in the `[user]` section of gitconfig either before running the script or in your `~/.gitconfig` file after it's created.
+
 Theoretically, it can be run it as root:
 ```commandline
 $ sudo ./init-osx-config.sh
